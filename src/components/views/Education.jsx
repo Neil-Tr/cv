@@ -1,7 +1,7 @@
 function EducationEach({ data }) {
   const { university, major, location, startDate, endDate } = data;
   return (
-    <div className="grid grid-cols-2 mb-3">
+    <div className="grid grid-cols-2 mb-3" key={university + major}>
       <p className="text-[1.2rem] font-semibold black">{university}</p>
       <p className="text-[1.2rem] font-semibold black justify-self-end">
         {location}
@@ -21,7 +21,7 @@ export default function Education({ data }) {
         Education
       </h2>
       {data.map((data) => {
-        return <EducationEach data={data} />;
+        return <EducationEach data={data} key={data.university + data.major} />;
       })}
     </div>
   );

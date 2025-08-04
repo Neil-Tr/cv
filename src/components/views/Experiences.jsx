@@ -4,7 +4,7 @@ function ExperiencesEach({ data }) {
   const { position, startDate, endDate, company, location, description } = data;
   return (
     <>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2" key={company + position}>
         <p className="text-[1.2rem] font-semibold black">{position}</p>
         <p className="text-[1.2rem] font-semibold black justify-self-end">
           {startDate} - {endDate}
@@ -13,9 +13,12 @@ function ExperiencesEach({ data }) {
         <p className="justify-self-end">{location}</p>
       </div>
       <div className="mb-3">
-        {description.map((desc) => {
+        {description.map((desc, i) => {
           return (
-            <p className="flex flex-row gap-x-2 items-center">
+            <p
+              className="flex flex-row gap-x-2 items-center"
+              key={`${desc}-${i}`}
+            >
               <MdFiberManualRecord className="text-[0.5rem] black ml-8" />
               {desc}
             </p>
