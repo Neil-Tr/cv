@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { format } from "date-fns";
 
 export default function EducationForm({ setData, data }) {
   const [university, setUniversity] = useState("");
@@ -54,8 +55,8 @@ export default function EducationForm({ setData, data }) {
       university,
       major,
       location,
-      startDate,
-      endDate,
+      startDate: startDate ? format(new Date(startDate), "MMM yyyy") : "",
+      endDate: endDate ? format(new Date(endDate), "MMM yyyy") : "now",
     };
     addNewEducation(newEducation);
     setUniversity("");
@@ -72,7 +73,7 @@ export default function EducationForm({ setData, data }) {
       </h2>
       <form className="form text-left p-3" onSubmit={handleSubmit}>
         <div className="grid grid-cols-[150px_1fr] gap-y-3 gap-x-4 items-center">
-          <label htmlFor="university">University: </label>
+          <label htmlFor="university">University* </label>
           <input
             type="text"
             name="university"
@@ -81,9 +82,10 @@ export default function EducationForm({ setData, data }) {
             value={university}
             placeholder="enter university"
             className="w-64 border border-gray-300 rounded-md"
+            required
           />
 
-          <label htmlFor="major">Major: </label>
+          <label htmlFor="major">Major* </label>
           <input
             type="text"
             name="major"
@@ -92,9 +94,10 @@ export default function EducationForm({ setData, data }) {
             value={major}
             placeholder="enter major"
             className="w-64 border border-gray-300 rounded-md"
+            required
           />
 
-          <label htmlFor="location">Location: </label>
+          <label htmlFor="location">Location* </label>
           <input
             type="text"
             name="location"
@@ -103,9 +106,10 @@ export default function EducationForm({ setData, data }) {
             value={location}
             placeholder="enter location"
             className="w-64 border border-gray-300 rounded-md"
+            required
           />
 
-          <label htmlFor="startDate">Start Date: </label>
+          <label htmlFor="startDate">Start Date* </label>
           <input
             type="date"
             name="startDate"
@@ -114,9 +118,10 @@ export default function EducationForm({ setData, data }) {
             value={startDate}
             placeholder="enter start date"
             className="w-64 border border-gray-300 rounded-md"
+            required
           />
 
-          <label htmlFor="endDate">End Date: </label>
+          <label htmlFor="endDate">End Date </label>
           <input
             type="date"
             name="endDate"
@@ -129,7 +134,7 @@ export default function EducationForm({ setData, data }) {
 
           <button
             type="submit"
-            className="m-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+            className="m-3 bg-gray-200 hover:bg-gray-400 text-gray-800 text-sm font-bold py-1 px-2 rounded"
           >
             Add Education
           </button>
@@ -147,7 +152,7 @@ export default function EducationForm({ setData, data }) {
                 <p className="flex-1">{data.university}</p>
                 <button
                   type="button"
-                  className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-1 rounded text-sm m-1"
+                  className="bg-gray-200 hover:bg-gray-400 text-gray-800 py-1 px-1 rounded text-sm m-1"
                   onClick={() => deleteEducation(data.university)}
                 >
                   Delete

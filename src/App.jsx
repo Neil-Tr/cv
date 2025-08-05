@@ -1,9 +1,10 @@
 import { useState } from "react";
 import PreviewSection from "./components/views/PreviewSection.jsx";
 import FormSection from "./components/forms/FormSection.jsx";
-import "./App.css";
-
+import Header from "./components/views/Header.jsx";
+import React, { useRef } from "react";
 function App() {
+  const previewRef = useRef();
   const [data, setData] = useState({
     personal: {
       name: "John Doe",
@@ -79,10 +80,18 @@ function App() {
   });
 
   return (
-    <div className="main">
-      <FormSection data={data} setData={setData} />
-      <PreviewSection data={data} />
-    </div>
+    <>
+      <Header previewRef={previewRef} />
+
+      <div className="flex flex-col xl:flex-row justify-around gap-3 bg-gray-800">
+        <div>
+          <FormSection data={data} setData={setData} />
+        </div>
+        <div ref={previewRef}>
+          <PreviewSection data={data} />
+        </div>
+      </div>
+    </>
   );
 }
 

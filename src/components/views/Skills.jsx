@@ -2,7 +2,7 @@ import { MdFiberManualRecord } from "react-icons/md";
 export default function Skills({ data }) {
   const { languages, frameworks, tools, softSkills } = data;
   return (
-    <div className="text-left mx-6 my-1">
+    <div className="text-left mx-6 my-1 border-b-2">
       <h2 className="text-[1.5rem] font-semibold black underline mb-2">
         Skills
       </h2>{" "}

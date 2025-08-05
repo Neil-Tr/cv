@@ -1,7 +1,7 @@
 export default function Person({ data }) {
   const { name, phone, email, linkedin, github } = data;
   return (
-    <div className="border-b-2 mx-6 my-1">
+    <div className="border-b-2 mx-6 my-1 text-center">
       <h1 className="text-[2rem] font-semibold text-stone-700">{name}</h1>
       <div className="flex flex-row justify-around px-4 py-2">
         <h3 className="underline">{phone}</h3>

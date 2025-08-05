@@ -11,7 +11,7 @@ export default function FormSection({ data, setData }) {
   const [showProject, setShowProject] = useState(false);
   const [showSkill, setShowSkill] = useState(false);
   return (
-    <div className="m-auto border-1 min-w-lg border-gray">
+    <div className="m-auto min-w-lg bg-white">
       <div>
         <button
           type="button"
@@ -72,7 +72,7 @@ export default function FormSection({ data, setData }) {
           <span className="mr-2">{showSkill ? "▼" : "►"}</span>
           Skills
         </button>
-        {showSkill && <SkillForm setData={setData} data={data.skills} />}
+        {showSkill && <SkillForm setData={setData} />}
       </div>
     </div>
   );

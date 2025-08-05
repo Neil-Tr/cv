@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { format } from "date-fns";
 export default function ExperienceForm({ setData, data }) {
   const [company, setCompany] = useState("");
   const [position, setPosition] = useState("");
@@ -70,8 +71,8 @@ export default function ExperienceForm({ setData, data }) {
     const newExperience = {
       company,
       position,
-      startDate,
-      endDate,
+      startDate: startDate ? format(new Date(startDate), "MMM yyyy") : "",
+      endDate: endDate ? format(new Date(endDate), "MMM yyyy") : "now",
       location,
       description,
     };
@@ -91,7 +92,7 @@ export default function ExperienceForm({ setData, data }) {
       </h2>
       <form className="form text-left p-3" onSubmit={handleSubmit}>
         <div className="grid grid-cols-[150px_1fr] gap-y-3 gap-x-4 items-center">
-          <label htmlFor="company">Company: </label>
+          <label htmlFor="company">Company* </label>
           <input
             type="text"
             name="company"
@@ -100,9 +101,10 @@ export default function ExperienceForm({ setData, data }) {
             value={company}
             placeholder="enter company"
             className="w-64 border border-gray-300 rounded-md"
+            required
           />
 
-          <label htmlFor="position">Position: </label>
+          <label htmlFor="position">Position* </label>
           <input
             type="text"
             name="position"
@@ -111,9 +113,10 @@ export default function ExperienceForm({ setData, data }) {
             value={position}
             placeholder="enter position"
             className="w-64 border border-gray-300 rounded-md"
+            required
           />
 
-          <label htmlFor="startDate">Start Date: </label>
+          <label htmlFor="startDate">Start Date* </label>
           <input
             type="date"
             name="startDate"
@@ -122,9 +125,10 @@ export default function ExperienceForm({ setData, data }) {
             value={startDate}
             placeholder="enter start date"
             className="w-64 border border-gray-300 rounded-md"
+            required
           />
 
-          <label htmlFor="endDate">End Date: </label>
+          <label htmlFor="endDate">End Date </label>
           <input
             type="date"
             name="endDate"
@@ -135,7 +139,7 @@ export default function ExperienceForm({ setData, data }) {
             className="w-64 border border-gray-300 rounded-md"
           />
 
-          <label htmlFor="location">Location: </label>
+          <label htmlFor="location">Location* </label>
           <input
             type="text"
             name="location"
@@ -144,9 +148,10 @@ export default function ExperienceForm({ setData, data }) {
             value={location}
             placeholder="enter location"
             className="w-64 border border-gray-300 rounded-md"
+            required
           />
 
-          <label htmlFor="description">Description: </label>
+          <label htmlFor="description">Description </label>
           <div className="flex flex-row">
             <textarea
               type="text"
@@ -154,13 +159,15 @@ export default function ExperienceForm({ setData, data }) {
               id="description"
               onChange={handleInputChange}
               value={newDescLine}
-              placeholder="enter description"
+              rows={4}
+              cols={40}
+              placeholder="enter description, click '+' button on the right to add multiple lines"
               className="w-64 border border-gray-300 rounded-md"
             />
             <button
               onClick={addDescription}
               type="button"
-              className="text-2xl font-bold text-blue-700 m-2"
+              className="text-3xl font-bold text-gray-700 m-2"
             >
               +
             </button>
@@ -191,14 +198,14 @@ export default function ExperienceForm({ setData, data }) {
         )}
         <button
           type="submit"
-          className="m-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+          className=" text-sm m-3 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded"
         >
           Add Experience
         </button>
       </form>
 
       {data.length > 0 && (
-        <div className="justify-self-start p-2 text-left">
+        <div className="justify-self-start p-2 text-left min-w-full">
           <h3 className="text-[1rem] font-semibold black"> All Experiences </h3>
           {data.map((data) => {
             return (
@@ -209,7 +216,7 @@ export default function ExperienceForm({ setData, data }) {
                 <p className="flex-1">{data.company}</p>
                 <button
                   type="button"
-                  className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-1 rounded text-sm m-1"
+                  className="bg-gray-200 hover:bg-gray-400 text-gray-800 py-1 px-1 rounded text-sm m-1"
                   onClick={() => deleteExperience(data.company)}
                 >
                   Delete

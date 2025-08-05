@@ -35,7 +35,7 @@ export default function PersonalForm({ setData }) {
       </h2>
       <form className="form text-left p-3">
         <div className="grid grid-cols-[150px_1fr] gap-y-3 gap-x-4 items-center">
-          <label htmlFor="name">Full Name: </label>
+          <label htmlFor="name">Full Name* </label>
           <input
             type="text"
             name="name"
@@ -43,9 +43,10 @@ export default function PersonalForm({ setData }) {
             onChange={handleInputChange}
             placeholder="enter name"
             className="w-64 border border-gray-300 rounded-md"
+            required
           />
 
-          <label htmlFor="phone">Phone: </label>
+          <label htmlFor="phone">Phone* </label>
           <input
             type="text"
             name="phone"
@@ -53,9 +54,10 @@ export default function PersonalForm({ setData }) {
             onChange={handleInputChange}
             placeholder="enter phone"
             className="w-64 border border-gray-300 rounded-md"
+            required
           />
 
-          <label htmlFor="email">Email: </label>
+          <label htmlFor="email">Email* </label>
           <input
             type="text"
             name="email"
@@ -63,9 +65,10 @@ export default function PersonalForm({ setData }) {
             onChange={handleInputChange}
             placeholder="enter email"
             className="w-64 border border-gray-300 rounded-md"
+            required
           />
 
-          <label htmlFor="linkedin">LinkedIn: </label>
+          <label htmlFor="linkedin">LinkedIn* </label>
           <input
             type="text"
             name="linkedin"
@@ -73,9 +76,10 @@ export default function PersonalForm({ setData }) {
             onChange={handleInputChange}
             placeholder="enter LinkedIn"
             className="w-64 border border-gray-300 rounded-md"
+            required
           />
 
-          <label htmlFor="github">GitHub: </label>
+          <label htmlFor="github">GitHub* </label>
           <input
             type="text"
             name="github"
@@ -83,6 +87,7 @@ export default function PersonalForm({ setData }) {
             onChange={handleInputChange}
             placeholder="enter GitHub"
             className="w-64 border border-gray-300 rounded-md"
+            required
           />
         </div>
       </form>
